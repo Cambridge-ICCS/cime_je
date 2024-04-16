@@ -12,13 +12,13 @@ It is based on the `maint-5.6` branch which is used to support CESM 2.
 
 To use in CESM, first obtain a copy of CESM as described [here](https://github.com/ESCOMP/CESM)
 and then modify the `Externals.cfg` to point at this repository and branch instead:
-```
+```toml
 [cime]
-branch = ftorch_forpy_cime
-protocol = git
-repo_url = https://github.com/Cambridge-ICCS/cime_je
-local_path = cime
-required = True
+branch = "ftorch_forpy_cime"
+protocol = "git"
+repo_url = "https://github.com/Cambridge-ICCS/cime_je"
+local_path = "cime"
+required = true
 ```
 
 You will also need to have a copy of `libtorch`.
