@@ -596,6 +596,13 @@ ifdef LIB_MPI
    endif
 endif
 
+# Set FTorch info if it is being used to couple machine learning code to Fortran
+ifeq ($(strip $(USE_FTORCH)), TRUE)
+  # FTORCH_LIB := /glade/u/home/jatkinson/FTorch/bin/oneapi_2023.2.1_torch_2.1
+  INCLDIR += -I$(FTORCH_LIB)/include/ftorch
+  SLIBS += -L$(FTORCH_LIB)/lib64 -lftorch
+endif
+
 # Add xios libraries for NEMO
 ifdef XIOS_PATH
   SLIBS += -L$(XIOS_PATH)/lib -lxios -lstdc++
