@@ -597,6 +597,8 @@ ifdef LIB_MPI
 endif
 
 # Set FTorch info if it is being used to couple machine learning code to Fortran
+# TODO: This should be wrapped in an ifdef or ifeq statement with `USE_FTORCH` defined
+# appropriately and `FTORCH_LIB` defined as an xml input variable.
 FTORCH_LIB := /glade/u/home/jatkinson/FTorch/bin/oneapi_2023.2.1_torch_2.1
 INCLDIR += -I$(FTORCH_LIB)/include/ftorch
 SLIBS += -L$(FTORCH_LIB)/lib64 -lftorch
