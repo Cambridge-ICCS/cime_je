@@ -558,7 +558,7 @@ endif
 
 
 # Set FTorch info if it is being used
-ifeq ($(strip $(USE_FTORCH)), True)
+ifeq ($(strip $(USE_FTORCH)), TRUE)
   CPPDEFS += -DUSE_FTORCH
   FTORCH_LOC := /glade/u/home/jatkinson/FTorch/bin/oneapi_2023.2.1_torch_2.1
   INCLDIR += -I$(FTORCH_LOC)/include/ftorch
