@@ -559,16 +559,15 @@ endif
 
 # Set FTorch info if it is being used
 ifeq ($(strip $(USE_FTORCH)), TRUE)
-  CPPDEFS += -DUSE_FTORCH
-  FTORCH_LOC := /glade/u/home/jatkinson/FTorch/bin/oneapi_2023.2.1_torch_2.1
-  INCLDIR += -I$(FTORCH_LOC)/include/ftorch
-  SLIBS += -L$(FTORCH_LOC)/lib64 -lftorch
-  LDFLAGS += -Wl,-rpath,$(FTORCH_LOC)/lib64
+  ifdef FTORCH_LOC
+    CPPDEFS += -DUSE_FTORCH
+    INCLDIR += -I$(FTORCH_LOC)/include/ftorch
+    SLIBS += -L$(FTORCH_LOC)/lib64 -lftorch
+    LDFLAGS += -Wl,-rpath,$(FTORCH_LOC)/lib64
+  else
+	$(error USE_FTORCH is TRUE but FTORCH_LOC has not been defined)
+  endif
 endif
-FTORCH_LOC := /glade/u/home/jatkinson/FTorch/bin/oneapi_2023.2.1_torch_2.1
-INCLDIR += -I$(FTORCH_LOC)/include/ftorch
-SLIBS += -L$(FTORCH_LOC)/lib64 -lftorch
-LDFLAGS += -Wl,-rpath,$(FTORCH_LOC)/lib64
 
 
 ifdef XIOS_PATH
